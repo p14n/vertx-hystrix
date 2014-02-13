@@ -9,3 +9,4 @@ Contains Hystrix commands running in in three different ways
  * As a registered handler, using HystrixCommand which will use the Hystrix thread pool (receiver project)
  * As a sender (sender project)
  
+Note this uses unreleased versions of both Hystrix and mod-rxvertx (in the libs directory).
