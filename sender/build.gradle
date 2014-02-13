@@ -1,0 +1,40 @@
+apply plugin: 'java'
+
+configurations {
+    provided
+}
+
+project.ext.vertxVersion = "2.1M3"
+
+group = 'jhc.fapi'
+version = '0.0.1'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    //compile "com.netflix.hystrix:hystrix-core:1.3.9-SNAPSHOT"
+    //compile "io.vertx:mod-rxvertx:1.0.0-beta3-SNAPSHOT"
+    runtime fileTree(dir: '../libs', include: '*.jar')
+    compile "com.netflix.rxjava:rxjava-core:0.14.11"
+    compile "org.slf4j:slf4j-api:1.7.2"
+    compile "com.netflix.archaius:archaius-core:0.4.1"
+
+    compile("com.netflix.hystrix:hystrix-yammer-metrics-publisher:1.3.8") {
+        exclude module: 'hystrix-core'
+    }
+
+    compile "io.vertx:vertx-core:$vertxVersion"
+    compile "io.vertx:vertx-platform:$vertxVersion"
+    compile files('../libs/hystrix-core-1.3.9-SNAPSHOT.jar')
+    compile files('../libs/mod-rxvertx-1.0.0-beta3-SNAPSHOT.jar')
+
+}
+
+task copyToLib(type: Copy) {
+    into "$buildDir/output/lib"
+    from configurations.runtime
+}

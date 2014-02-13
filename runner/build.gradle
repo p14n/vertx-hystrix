@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin:'application'
+
+mainClassName = "com.p14n.vertx.VertHystrixRunner"
+
+project.ext.vertxVersion = "2.1M3"
+
+group = 'jhc.fapi'
+version = '0.0.1'
+sourceCompatibility = 1.7
+targetCompatibility = 1.7
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+
+    compile "io.vertx:vertx-core:$vertxVersion"
+    compile "io.vertx:vertx-platform:$vertxVersion"
+
+}
+
+
+
