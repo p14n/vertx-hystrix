@@ -21,6 +21,7 @@ public class TestVert extends Verticle {
   public void start() {
 
     HystrixEventBus bus = new HystrixEventBus("receiver", vertx.eventBus());
+    HystrixMetricsSender sender = new HystrixMetricsSender(vertx.eventBus());
 
     final MetricsRegistry metrics = new MetricsRegistry();
     HystrixPlugins.getInstance().registerMetricsPublisher(new HystrixYammerMetricsPublisher(metrics));

@@ -1,0 +1,23 @@
+apply plugin: 'java'
+
+configurations {
+    provided
+}
+
+project.ext.vertxVersion = "2.1M3"
+
+group = 'jhc.fapi'
+version = '0.0.1'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+
+dependencies {
+    compile "io.vertx:vertx-core:$vertxVersion"
+    compile "io.vertx:vertx-platform:$vertxVersion"
+    compile group: "com.netflix.hystrix", name: "hystrix-metrics-event-stream", version: "1.1.2"
+    testCompile group: 'junit', name: 'junit', version: '4.11'
+}

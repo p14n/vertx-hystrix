@@ -37,7 +37,9 @@ public class VertHystrixRunner {
 
     setupLogging();
     PlatformManager pm = PlatformLocator.factory.createPlatformManager();
-    deployAll(pm,"receiver","sender");
+    deployAll(pm,
+            "receiver","sender",
+            "dashboard");
     Thread.currentThread().join();
 
   }
