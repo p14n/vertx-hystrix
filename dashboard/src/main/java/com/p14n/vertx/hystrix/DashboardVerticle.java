@@ -55,8 +55,6 @@ public class DashboardVerticle extends Verticle {
     response.headers().add("Cache-Control", "no-cache, no-store, max-age=0, must-revalidate");
     response.headers().add("Pragma", "no-cache");
 
-    vertx.eventBus().publish("hystrix-dashboard-admin", delay);
-
     vertx.eventBus().registerHandler("hystrix-dashboard-data", new Handler<Message<String>>() {
       @Override
       public void handle(Message<String> event) {
@@ -71,5 +69,8 @@ public class DashboardVerticle extends Verticle {
         }
       }
     });
+
+    vertx.eventBus().publish("hystrix-dashboard-admin", delay);
+
   }
 }
